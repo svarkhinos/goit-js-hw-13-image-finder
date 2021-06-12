@@ -42,6 +42,10 @@ function fetchPictures() {
     loadMoreBtn.disable();
 
     apiService.fetchPictures().then(hits => {
+        if (hits.length === 0) {
+            loadMoreBtn.hide();
+            return alert('Sorry, no matches found... Try another worlds!');
+        }
         appendPicturesMarkup(hits);
         loadMoreBtn.enable();
     });

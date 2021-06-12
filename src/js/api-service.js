@@ -1,4 +1,4 @@
-const API_KEY ='21915406-973315f608c7e35a5d0268cdc'
+const API_KEY = '21915406-973315f608c7e35a5d0268cdc';
 
 export default class ApiService {
     constructor() {
@@ -7,23 +7,21 @@ export default class ApiService {
     }
 
     fetchPictures() {
-
-        
-      return  fetch(
-        `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`,
-    )
-        .then(response => response.json())
-        .then(({hits}) =>{
-            this.incrementPage();
-            return hits;
-        });
+        return fetch(
+            `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`,
+        )
+            .then(response => response.json())
+            .then(({ hits }) => {
+                this.incrementPage();
+                return hits;
+            });
     }
 
-incrementPage() {
-    this.page +=1;
-}
+    incrementPage() {
+        this.page += 1;
+    }
 
- resetPage() {
+    resetPage() {
         this.page = 1;
     }
 
@@ -31,7 +29,7 @@ incrementPage() {
         return this.searchQuery;
     }
 
-    set query (newQuery) {
-        this.searchQuery = newQuery
+    set query(newQuery) {
+        this.searchQuery = newQuery;
     }
 }
